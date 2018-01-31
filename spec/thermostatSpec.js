@@ -71,6 +71,7 @@ describe ('Thermostat', function () {
   });
 
 
+
   describe('Thermostat Current Energy Usage', function () {
     it('Low-Usage as temperature < 18 degrees', function () {
       for (var i = 0; i < 3; i++) {

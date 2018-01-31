@@ -1,53 +1,55 @@
 function Thermostat() {
-  this.temperature = 20;
-  this.maxTemp = 32;
-  this.minTemp = 10;
+  this.TEMPERATURE = 20;
+  this.MAX_TEMP = 32;
+  this.MIN_TEMP = 10;
+  this.LOW_USAGE_LIMIT = 18;
+  this.MEDIUM_USAGE_LIMIT = 25;
   this.powerSave(true);
 }
 
 Thermostat.prototype.currentTemp = function () {
-  return this.temperature;
+  return this.TEMPERATURE;
 };
 
 Thermostat.prototype.up = function () {
 
-  if (this.maxTemp === this.temperature) {
+  if (this.MAX_TEMP === this.TEMPERATURE) {
     return;
   }
 
-  this.temperature += 1;
+  this.TEMPERATURE += 1;
 };
 
 Thermostat.prototype.down = function () {
 
-  if (this.minTemp === this.temperature) {
+  if (this.MIN_TEMP === this.TEMPERATURE) {
     return;
   }
-  this.temperature -= 1;
+  this.TEMPERATURE -= 1;
 };
 
 
 Thermostat.prototype.powerSave = function (boolean) {
 
   if (boolean === true) {
-    this.maxTemp = 25;
+    this.MAX_TEMP = 25;
   } else {
-    this.maxTemp = 32;
+    this.MAX_TEMP = 32;
   }
 };
 
 Thermostat.prototype.reset = function () {
-  this.temperature = 20;
+  this.TEMPERATURE = 20;
 };
 
 Thermostat.prototype.currentEnergyUsage = function () {
 
-  if (this.temperature < 18) {
+  if (this.TEMPERATURE < this.LOW_USAGE_LIMIT) {
     return 'GREEN';
 
-  } else if (this.temperature < 25) {
+  } else if (this.TEMPERATURE < this.MEDIUM_USAGE_LIMIT) {
     return 'BLACK';
-    
+
   } else {
     return 'RED';
   }
