@@ -5,6 +5,10 @@ function Thermostat() {
   this.powerSave(true);
 }
 
+Thermostat.prototype.currentTemp = function () {
+  return this.temperature;
+};
+
 Thermostat.prototype.up = function () {
 
   if (this.maxTemp === this.temperature) {
@@ -30,4 +34,8 @@ Thermostat.prototype.powerSave = function (boolean) {
   } else {
     this.maxTemp = 32;
   }
+};
+
+Thermostat.prototype.reset = function () {
+  this.temperature = 20;
 };
