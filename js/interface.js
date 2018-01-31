@@ -24,16 +24,19 @@ $(document).ready (function () {
 
   $("#powersaving-on").on('click', function () {
     thermostat.powerSaveModeOn();
-
+    $("#power-saving-status").text(thermostat.POWER_SAVE_STATUS);
   });
 
 
   $("#powersaving-off").on('click', function () {
     thermostat.powerSaveModeOff();
+    $("#power-saving-status").text(thermostat.POWER_SAVE_STATUS);
   });
 
   function updateTemp() {
-    $('#temperature').text(thermostat.currentTemp());
+    $('#temperature').text(thermostat.currentTemp()).animate({ marginTop: "80px" }, 1500 )
+               .animate({ marginTop: "40px" }, 800 );
+
   }
 
 });

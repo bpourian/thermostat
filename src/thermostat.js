@@ -4,6 +4,7 @@ function Thermostat() {
   this.MIN_TEMP = 10;
   this.LOW_USAGE_LIMIT = 18;
   this.MEDIUM_USAGE_LIMIT = 25;
+  this.POWER_SAVE_STATUS = 'on';
   this.powerSaveModeOn();
 }
 
@@ -29,10 +30,12 @@ Thermostat.prototype.down = function () {
 };
 
 Thermostat.prototype.powerSaveModeOn = function () {
+  this.POWER_SAVE_STATUS = 'on';
   this.MAX_TEMP = 25;
 };
 
 Thermostat.prototype.powerSaveModeOff = function () {
+  this.POWER_SAVE_STATUS = 'off';
   this.MAX_TEMP = 32;
 };
 
