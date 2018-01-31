@@ -2,39 +2,26 @@ function Thermostat() {
   this.temperature = 20;
   this.maxTemp = 32;
   this.minTemp = 10;
+  this.powerSave(true);
 }
 
-Thermostat.prototype.up = function (number) {
-  this._calculateMaxTemp(number);
-};
+Thermostat.prototype.up = function () {
 
-Thermostat.prototype.down = function (number) {
-
-  this._calculateMinTemp(number);
-};
-
-
-Thermostat.prototype._calculateMinTemp = function (number) {
-
-  var temp = this.temperature - number;
-
-  if (temp < this.minTemp) {
-    this.temperature = this.minTemp;
-  }else {
-    this.temperature = temp;
+  if (this.maxTemp === this.temperature) {
+    return;
   }
+
+  this.temperature += 1;
 };
 
-Thermostat.prototype._calculateMaxTemp = function (number) {
+Thermostat.prototype.down = function () {
 
-  var temp = this.temperature + number;
-
-  if (temp > this.maxTemp) {
-    this.temperature = this.maxTemp;
-  }else {
-    this.temperature = temp;
+  if (this.minTemp === this.temperature) {
+    return;
   }
+  this.temperature -= 1;
 };
+
 
 Thermostat.prototype.powerSave = function (boolean) {
 
