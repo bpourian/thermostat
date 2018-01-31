@@ -39,3 +39,17 @@ Thermostat.prototype.powerSave = function (boolean) {
 Thermostat.prototype.reset = function () {
   this.temperature = 20;
 };
+
+Thermostat.prototype.currentEnergyUsage = function () {
+
+  if (this.temperature < 18) {
+    return 'GREEN';
+
+  } else if (this.temperature < 25) {
+    return 'BLACK';
+    
+  } else {
+    return 'RED';
+  }
+
+};

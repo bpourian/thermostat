@@ -69,4 +69,25 @@ describe ('Thermostat', function () {
       expect(thermostat.currentTemp()).toEqual(20);
     });
   });
+
+
+  describe('Thermostat Current Energy Usage', function () {
+    it('Low-Usage as temperature < 18 degrees', function () {
+      for (var i = 0; i < 3; i++) {
+        thermostat.down();
+      }
+      expect(thermostat.currentEnergyUsage()).toContain('GREEN');
+    });
+
+    it('Low_Usage as temperature < 25 degrees', function () {
+      expect(thermostat.currentEnergyUsage()).toContain('BLACK');
+    });
+
+    it('Low-Usage as temperature < 18 degrees', function () {
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.currentEnergyUsage()).toContain('RED');
+    });
+  });
 });
