@@ -8,7 +8,6 @@ describe ('Thermostat', function () {
 
 
 
-
   describe('Thermostat Temperature Controls', function () {
     it('Starts at 20 degrees', function () {
       expect(thermostat.currentTemp()).toEqual(20);
@@ -80,11 +79,11 @@ describe ('Thermostat', function () {
       expect(thermostat.currentEnergyUsage()).toContain('GREEN');
     });
 
-    it('Low_Usage as temperature < 25 degrees', function () {
+    it('Medium-Usage as temperature < 25 degrees', function () {
       expect(thermostat.currentEnergyUsage()).toContain('BLACK');
     });
 
-    it('Low-Usage as temperature < 18 degrees', function () {
+    it('High-Usage as temperature < 18 degrees', function () {
       for (var i = 0; i < 6; i++) {
         thermostat.up();
       }
