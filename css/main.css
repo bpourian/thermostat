@@ -1,24 +1,33 @@
 body{
   width: 80%;
   margin: 50px auto;
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   text-align: center;
   font-size: 1.3em;
-}
-
-section{
-  background-color: #9AD595;
-
+  background-color: #F9C59E;
 }
 
 h1{
-  color: red;
+  color: blue;
   font-size: 2em;
   margin: auto;
+  font-style: Helvetica;
 }
 
 button{
   padding: 1em;
   font-size: 0.5em;
   border-radius: 50px;
+}
+
+.GREEN {
+  color: green;
+}
+
+.BLACK {
+  color: black;
+}
+
+.RED {
+  color: red;
 }
