@@ -2,14 +2,18 @@
 <html>
   <head>
     <title>Thermostat</title>
-
+  <link rel="stylesheet" href="css/main.css">
 
   </head>
   <body>
-  <div >
-    <h1 id="temperature"></h1>
-  </div>
+  <div>
+    <section>
+      <h1>Current temperature: <span id="current-temperature"></span> &#8451;</h1>
 
+    <!-- longitude:<span id='demo' onclick="locateMe.getLocation()">click</span> -->
+    <!-- latitude: <span></span> -->
+  </section>
+  </div>
     <section>
       <p>
         <button id="temperature-up">+</button>
@@ -20,8 +24,14 @@
         <button id="powersaving-off">PSM off</button>
       </p>
     </section>
+
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="./src/thermostat.js"></script>
+    <script src="src/thermostat.js"></script>
+    <script src="src/weather_geolocation.js"></script>
     <script src="js/interface.js"></script>
+
+    </script>
   </body>
 </html>

@@ -1,11 +1,9 @@
-// window.onload = function() {
-//      alert( "Thermostat created by Benjamin Pourian" );
-//  };
-
-
 $(document).ready (function () {
   var thermostat = new Thermostat();
+  getLocation();
   updateTemp();
+
+
 
   $("#temperature-up").on('click', function () {
     thermostat.up();
@@ -33,15 +31,34 @@ $(document).ready (function () {
     $("#power-saving-status").text(thermostat.POWER_SAVE_STATUS);
   });
 
-  function updateTemp() {
-    $('#temperature').text(thermostat.currentTemp()).animate({ marginTop: "80px" }, 1500 )
-               .animate({ marginTop: "40px" }, 800 );
 
+  function updateTemp() {
+    $('#temperature').text(thermostat.currentTemp());
+    $('#temperature').attr('class', thermostat.currentEnergyUsage());
+    }
+
+  function weather_geo(lats, lons){
+    $ .get('http://api.openweathermap.org/data/2.5/weather?lat='+lats+'&lon='+lons+'&appid=c252e58bddeae127ff371336100e5aa9&units=metric', function(data) {
+    $('#current-temperature').text(data.main.temp);
+      });
+      }
+
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(geoPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
   }
 
-});
 
-// $('#temp-up').on('click', function() { // event listener
-//   thermostat.increaseTemperature(); // update model
-//   $('#temperature').text(thermostat.temperature); // update view
-// })
+  function geoPosition(position) {
+      if (position.coords.latitude != '') {
+      $ .get('http://api.openweathermap.org/data/2.5/weather?lat='+position.coords.latitude+'&lon='+position.coords.longitude+'&appid=c252e58bddeae127ff371336100e5aa9&units=metric', function(data) {
+      $('#current-temperature').text(data.main.temp);
+        });
+
+    }
+  }
+
+  });
